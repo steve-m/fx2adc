@@ -1,0 +1,46 @@
+#
+# Copyright 2024 Steve Markgraf <steve@steve-m.de>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+# VID/PID of FX2LAFW, after downloading firmware to the FX2
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="608e", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# Hantek 6022BE #1
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="6022", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# Hantek 6022BE #2
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="04b5", ATTRS{idProduct}=="6022", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# Voltcraft DSO2020
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="2020", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# Sainsmart DDS120
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="8102", ATTRS{idProduct}=="8102", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# Hantek 6022BL #1
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="602a", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# Hantek 6022BL #2
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="04b5", ATTRS{idProduct}=="602a", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# YiXingDianZi MDSO
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="d4a2", ATTRS{idProduct}=="5660", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# Instrustar ISDS205B
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="d4a2", ATTRS{idProduct}=="5661", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
+
+# Hantek PSO2020
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="6023", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
