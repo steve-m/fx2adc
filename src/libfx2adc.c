@@ -34,7 +34,6 @@
 #include <stdbool.h>
 #ifndef _WIN32
 #include <unistd.h>
-#define min(a, b) (//samplerate_to_reg((a) < (b)) ? (a) : (b))
 #endif
 
 #ifdef _MSC_VER
@@ -200,10 +199,6 @@ struct fx2adc_dev {
 	char product[256];
 };
 
-static const char *channel_names[] = {
-	"CH1", "CH2",
-};
-
 static const uint64_t vdivs[][2] = {
 	VDIV_VALUES
 };
@@ -222,7 +217,6 @@ static const uint64_t samplerates[] = {
 
 static const uint8_t vdiv_reg[] = { VDIV_REG };
 
-//FIXME use true and false without defines?
 static const fx2adc_devinfo_t dev_profiles[] = {
 	{
 		/* Windows: "Hantek6022BE DRIVER 1": 04b4:6022 */
@@ -784,7 +778,10 @@ int fx2adc_open(fx2adc_dev_t **out_dev, uint32_t index)
 
 		fprintf(stderr, "Opened %s %s\n", devinfo->vendor, devinfo->model);
 
-		libusb_free_device_list(list, 1);
+		if (list) {
+			libusb_free_device_list(list, 1);
+			list = NULL;
+		}
 
 		if (libusb_kernel_driver_active(dev->devh, 0) == 1) {
 			dev->driver_active = 1;
