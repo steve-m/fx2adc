@@ -108,7 +108,7 @@ add_custom_target(uninstall
 ########################################################################
 # Install udev rules
 ########################################################################
-option(INSTALL_UDEV_RULES "Install udev rules" OFF)
+option(INSTALL_UDEV_RULES "Install udev rules" ON)
 if (INSTALL_UDEV_RULES)
     install (
         FILES fx2adc.rules
@@ -118,6 +118,18 @@ if (INSTALL_UDEV_RULES)
 else (INSTALL_UDEV_RULES)
     message (STATUS "Udev rules not being installed, install them with -DINSTALL_UDEV_RULES=ON")
 endif (INSTALL_UDEV_RULES)
+
+option(INSTALL_FIRMWARE "Install firmware files" ON)
+if (INSTALL_FIRMWARE)
+    install (
+        DIRECTORY firmware/
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fx2adc-firmware"
+        COMPONENT "firmware"
+        FILES_MATCHING PATTERN "*.fw"
+        )
+else (INSTALL_FIRMWARE)
+    message (STATUS "Firmware files not being installed, install them with -DINSTALL_FIRMWARE=ON")
+endif (INSTALL_FIRMWARE)
 
 option(DETACH_KERNEL_DRIVER "Detach kernel driver if loaded" OFF)
 if (DETACH_KERNEL_DRIVER)

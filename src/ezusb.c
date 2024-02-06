@@ -43,6 +43,7 @@ const char *fw_pathlist[] = { "",
 			      "../firmware/",
 			      "../../firmware/",
 			       "/usr/share/fx2adc-firmware/",
+			       "/usr/local/share/fx2adc-firmware/",
 			      "/usr/share/sigrok-firmware/", };
 
 static void *firmware_file_load(const char *name, size_t *size, off_t max_size)
