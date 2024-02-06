@@ -113,7 +113,6 @@ int main(int argc, char **argv)
 	char *filename = NULL;
 	int n_read;
 	int r, opt;
-	int gain = 0;
 	int ppm_error = 0;
 	FILE *file;
 	uint8_t *buffer;
@@ -123,13 +122,10 @@ int main(int argc, char **argv)
 	uint32_t out_block_size = DEFAULT_BUF_LENGTH;
 	bool use_ext_clk = false;
 
-	while ((opt = getopt(argc, argv, "d:f:g:s:b:n:p:v:e")) != -1) {
+	while ((opt = getopt(argc, argv, "d:s:b:n:p:v:d:e")) != -1) {
 		switch (opt) {
 		case 'd':
 			dev_index = (uint32_t)atoi(optarg);
-			break;
-		case 'g':
-			gain = (int)(atof(optarg) * 10); /* tenths of a dB */
 			break;
 		case 's':
 			samp_rate = (uint32_t)atof(optarg);

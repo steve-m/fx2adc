@@ -332,7 +332,6 @@ int main(int argc, char **argv)
 	int aiErr;
 	uint32_t buf_num = 0;
 	int dev_index = 0;
-	int gain = 0;
 	int vdiv = 0;
 	int ppm_error = 0;
 	struct llist *curelem,*prev;
@@ -354,13 +353,10 @@ int main(int argc, char **argv)
 	struct sigaction sigact, sigign;
 #endif
 
-	while ((opt = getopt(argc, argv, "a:p:g:s:v:b:n:de")) != -1) {
+	while ((opt = getopt(argc, argv, "a:p:s:v:b:n:d:e")) != -1) {
 		switch (opt) {
 		case 'd':
 			dev_index = (uint32_t)atoi(optarg);
-			break;
-		case 'g':
-			gain = (int)(atof(optarg) * 10); /* tenths of a dB */
 			break;
 		case 's':
 			samp_rate = (uint32_t)atof(optarg);
