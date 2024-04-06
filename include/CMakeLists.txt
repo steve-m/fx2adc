@@ -1,6 +1,6 @@
 # Copyright 2012 OSMOCOM Project
 #
-# This file is part of rtl-sdr
+# This file is part of fx2adc
 #
 # GNU Radio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 # Install public header files
 ########################################################################
 install(FILES
-    rtl-sdr.h
-    rtl-sdr_export.h
+    fx2adc.h
+    fx2adc_export.h
     DESTINATION include
 )
