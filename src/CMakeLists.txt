@@ -35,8 +35,8 @@ generate_export_header(fx2adc)
 ########################################################################
 # Setup static library variant
 ########################################################################
-add_library(fx2adc_static STATIC libfx2adc.c)
-target_link_libraries(fx2adc m ${LIBUSB_LIBRARIES} ${THREADS_PTHREADS_LIBRARY})
+add_library(fx2adc_static STATIC libfx2adc.c ezusb.c si5351.c)
+target_link_libraries(fx2adc_static m ${LIBUSB_LIBRARIES} ${THREADS_PTHREADS_LIBRARY})
 target_include_directories(fx2adc_static PUBLIC
   $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>  # <prefix>/include
@@ -44,6 +44,7 @@ target_include_directories(fx2adc_static PUBLIC
   ${THREADS_PTHREADS_INCLUDE_DIR}
   )
 set_property(TARGET fx2adc_static APPEND PROPERTY COMPILE_DEFINITIONS "fx2adc_STATIC" )
+set_property(TARGET fx2adc_static PROPERTY POSITION_INDEPENDENT_CODE ON)
 if(NOT WIN32)
 # Force same library filename for static and shared variants of the library
 set_target_properties(fx2adc_static PROPERTIES OUTPUT_NAME fx2adc)
