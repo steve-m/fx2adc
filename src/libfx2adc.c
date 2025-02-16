@@ -655,13 +655,13 @@ int fx2adc_get_index_by_serial(const char *serial)
 void fx2adc_init_hardware(fx2adc_dev_t *dev)
 {
 	int r;
-	uint8_t vdiv_index = vdiv_reg[dev->devinfo->vdivs_size - 1];
+	uint8_t vdiv_index = dev->devinfo->vdivs_size - 1;
 
 	/* for now, only use one channel */
 	fx2adc_write_control(dev, CHANNELS_REG, 1);
 
 	/* write smallest possible voltage range as default */
-	fx2adc_write_control(dev, VDIV_CH1_REG, vdiv_reg[dev->devinfo->vdivs_size - 1]);
+	fx2adc_write_control(dev, VDIV_CH1_REG, vdiv_reg[vdiv_index]);
 	dev->vdiv = (dev->devinfo->vdivs[vdiv_index][0] * 1000) / dev->devinfo->vdivs[vdiv_index][1];
 
 	/* select AC coupling if available on hardware */
